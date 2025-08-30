@@ -1,0 +1,123 @@
+.notification-banner {
+  background: #fce4f1; // fondo rosa claro
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  box-shadow: var(--shadow);
+  border-left: 4px solid #9b59b6; // morado por defecto
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(155, 89, 182, 0.15); // sombra morada suave
+  }
+
+  &.unread {
+    background: linear-gradient(135deg, #fce4f1 0%, rgba(155, 89, 182, 0.05) 100%);
+  }
+
+  &.notification-success {
+    border-left-color: #9b59b6; // morado
+    .notification-icon .icon {
+      color: #9b59b6;
+    }
+  }
+
+  &.notification-warning {
+    border-left-color: #ff6ec7; // rosa intenso
+    .notification-icon .icon {
+      color: #ff6ec7;
+    }
+  }
+
+  &.notification-error {
+    border-left-color: #d291bc; // rosa suave
+    .notification-icon .icon {
+      color: #d291bc;
+    }
+  }
+
+  &.notification-info {
+    border-left-color: #e754d7; // morado-rosado
+    .notification-icon .icon {
+      color: #e754d7;
+    }
+  }
+}
+
+.notification-content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.notification-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8d6f4; // rosa suave
+  border-radius: 50%;
+}
+
+.icon {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+}
+
+.notification-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-message {
+  margin: 0 0 var(--spacing-xs) 0;
+  color: #9b59b6; // morado
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.notification-time {
+  color: #e754d7; // rosa-morado
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+}
+
+.notification-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-shrink: 0;
+}
+
+/* Animation for auto-dismiss */
+.notification-banner.auto-dismiss {
+  animation: slideOut 0.5s ease-in-out forwards;
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .notification-content {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .notification-actions {
+    align-self: flex-end;
+  }
+}

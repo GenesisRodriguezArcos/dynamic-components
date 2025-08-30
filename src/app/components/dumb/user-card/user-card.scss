@@ -1,0 +1,148 @@
+.user-card {
+  background: #fce4f1; // fondo card rosa claro
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(155, 89, 182, 0.15); // sombra morada suave
+  }
+
+  &.card-selected {
+    border-color: #ff6ec7; // borde rosa
+    background: linear-gradient(135deg, #fce4f1 0%, rgba(155, 89, 182, 0.05) 100%);
+  }
+}
+
+.user-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.avatar-container {
+  position: relative;
+  margin-right: var(--spacing-md);
+}
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e754d7; // borde morado
+}
+
+.status-indicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #fce4f1;
+
+  &.status-active {
+    background-color: #9b59b6; // morado
+  }
+
+  &.status-inactive {
+    background-color: #d291bc; // rosa apagado
+  }
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: #9b59b6; // morado
+}
+
+.user-email {
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: var(--font-size-sm);
+  color: #e754d7; // rosa
+}
+
+.role-badge {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &.role-admin {
+    background-color: #ff6ec7; // rosa intenso
+    color: white;
+  }
+
+  &.role-manager {
+    background-color: #9b59b6; // morado
+    color: white;
+  }
+
+  &.role-user {
+    background-color: #d291bc; // rosa suave
+    color: white;
+  }
+
+  &.role-default {
+    background-color: #e0c3fc; // lavanda
+    color: white;
+  }
+}
+
+.user-details {
+  margin-bottom: var(--spacing-md);
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid #e754d7; // rosa
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.label {
+  font-weight: 500;
+  color: #d291bc; // rosa suave
+  font-size: var(--font-size-sm);
+}
+
+.value {
+  color: #9b59b6; // morado
+  font-size: var(--font-size-sm);
+}
+
+.user-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+
+  .btn {
+    flex: 1;
+    min-width: 120px;
+    background-color: #ff6ec7; // rosa para botones
+    color: white;
+
+    &:hover {
+      background-color: #9b59b6; // morado al hover
+    }
+  }
+}

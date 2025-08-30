@@ -1,0 +1,156 @@
+.product-card {
+  background: #fce4f1; // fondo rosa claro
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  border: 1px solid #e754d7; // borde morado suave
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(155, 89, 182, 0.15); // sombra morada suave
+  }
+}
+
+.product-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffdaf7 0%, #d291bc 100%); // gradiente rosa-morado
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.05);
+}
+
+.stock-badge {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &.stock-available {
+    background-color: #9b59b6; // morado
+    color: white;
+  }
+
+  &.stock-unavailable {
+    background-color: #ff6ec7; // rosa intenso
+    color: white;
+  }
+}
+
+.product-content {
+  padding: var(--spacing-lg);
+}
+
+.product-header {
+  margin-bottom: var(--spacing-md);
+}
+
+.product-name {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: #9b59b6; // morado
+  line-height: 1.3;
+}
+
+.product-category {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: #f8d6f4; // rosa suave
+  color: #e754d7; // morado rosa
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.product-description {
+  margin: 0 0 var(--spacing-md) 0;
+  color: #d291bc; // rosa suave
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  font-size: var(--font-size-lg);
+  color: #e754d7; // morado claro por defecto
+  transition: color 0.2s ease;
+
+  &.filled {
+    color: #ff6ec7; // rosa intenso
+  }
+
+  &.empty {
+    color: #e754d7; // morado claro
+  }
+}
+
+.rating-value {
+  font-size: var(--font-size-sm);
+  color: #9b59b6; // morado
+  font-weight: 500;
+}
+
+.product-price {
+  margin-bottom: var(--spacing-lg);
+}
+
+.price {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: #ff6ec7; // rosa
+}
+
+.product-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+
+  .btn {
+    flex: 1;
+    min-width: 120px;
+    background-color: #9b59b6; // morado
+    color: white;
+
+    &:hover {
+      background-color: #ff6ec7; // rosa al hover
+    }
+  }
+
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

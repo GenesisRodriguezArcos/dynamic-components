@@ -1,0 +1,28 @@
+<div class="notification-banner" [class]="getTypeClass()" [class.unread]="!notification.isRead">
+  <div class="notification-content">
+    <div class="notification-icon">
+      <span class="icon">{{ getIcon() }}</span>
+    </div>
+    
+    <div class="notification-body">
+      <p class="notification-message">{{ notification.message }}</p>
+      <span class="notification-time">{{ notification.timestamp | date:'short' }}</span>
+    </div>
+    
+    <div class="notification-actions">
+      <button 
+        *ngIf="!notification.isRead"
+        class="btn btn-sm btn-secondary" 
+        (click)="markAsRead()"
+        title="Mark as read">
+        ✓
+      </button>
+      <button 
+        class="btn btn-sm btn-close" 
+        (click)="dismiss()"
+        title="Dismiss">
+        ×
+      </button>
+    </div>
+  </div>
+</div>

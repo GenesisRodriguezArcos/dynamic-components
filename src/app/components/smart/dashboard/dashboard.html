@@ -1,0 +1,99 @@
+<div class="dashboard">
+  <!-- Header Section -->
+  <header class="dashboard-header">
+    <h1>Dynamic Components Dashboard</h1>
+    <div class="dashboard-stats">
+      <div class="stat-item">
+        <span class="stat-label">Active Users:</span>
+        <span class="stat-value">{{ getActiveUsersCount() }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Total Products:</span>
+        <span class="stat-value">{{ products.length }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Unread Notifications:</span>
+        <span class="stat-value">{{ getUnreadNotificationsCount() }}</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Notifications Section -->
+  <section class="notifications-section">
+    <h2>Notifications</h2>
+    <div class="notifications-container">
+      <app-notification-banner
+        *ngFor="let notification of notifications"
+        [notification]="notification"
+        [autoDismiss]="notification.type === 'success'"
+        (notificationDismissed)="onNotificationDismissed($event)"
+        (notificationRead)="onNotificationRead($event)">
+      </app-notification-banner>
+    </div>
+  </section>
+
+  <!-- Main Content Grid -->
+  <div class="dashboard-grid">
+    <!-- Users Section -->
+    <section class="users-section">
+      <h2>Users Management</h2>
+      <div class="users-grid">
+        <app-user-card
+          *ngFor="let user of users"
+          [user]="user"
+          [showActions]="true"
+          (userSelected)="onUserSelected($event)"
+          (userStatusChanged)="onUserStatusChanged($event)">
+        </app-user-card>
+      </div>
+      
+      <div class="selected-user" *ngIf="selectedUser">
+        <h3>Selected User Details</h3>
+        <div class="user-detail-card">
+          <p><strong>Name:</strong> {{ selectedUser.name }}</p>
+          <p><strong>Email:</strong> {{ selectedUser.email }}</p>
+          <p><strong>Role:</strong> {{ selectedUser.role }}</p>
+          <p><strong>Status:</strong> {{ selectedUser.isActive ? 'Active' : 'Inactive' }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+      <h2>Products Catalog</h2>
+      <div class="products-grid">
+        <app-product-card
+          *ngFor="let product of products"
+          [product]="product"
+          [showActions]="true"
+          (productSelected)="onProductSelected($event)"
+          (addToCart)="onAddToCart($event)">
+        </app-product-card>
+      </div>
+      
+      <div class="selected-product" *ngIf="selectedProduct">
+        <h3>Selected Product Details</h3>
+        <div class="product-detail-card">
+          <p><strong>Name:</strong> {{ selectedProduct.name }}</p>
+          <p><strong>Price:</strong> ${{ selectedProduct.price.toFixed(2) }}</p>
+          <p><strong>Category:</strong> {{ selectedProduct.category }}</p>
+          <p><strong>Rating:</strong> {{ selectedProduct.rating }}/5</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Cart Section -->
+  <section class="cart-section" *ngIf="cartItems.length > 0">
+    <h2>Shopping Cart ({{ cartItems.length }} items)</h2>
+    <div class="cart-items">
+      <div class="cart-item" *ngFor="let item of cartItems">
+        <span class="item-name">{{ item.name }}</span>
+        <span class="item-price">${{ item.price.toFixed(2) }}</span>
+      </div>
+    </div>
+    <div class="cart-total">
+      <strong>Total: ${{ getCartTotal().toFixed(2) }}</strong>
+    </div>
+  </section>
+</div>
